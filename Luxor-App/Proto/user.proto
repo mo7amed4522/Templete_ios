@@ -1,0 +1,167 @@
+syntax = "proto3";
+
+package user;
+
+import "common.proto";
+
+option go_package = "stander-monolithic-go/proto";
+
+service UserService {
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+  rpc AuthenticateUser(AuthenticateUserRequest) returns (AuthenticateUserResponse);
+  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse);
+  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+  rpc SendVerificationCode(SendVerificationCodeRequest) returns (SendVerificationCodeResponse);
+  rpc VerifyCode(VerifyCodeRequest) returns (VerifyCodeResponse);
+  rpc UploadPhoto(UploadPhotoRequest) returns (UploadPhotoResponse);
+  rpc GetUserPhotos(GetUserPhotosRequest) returns (GetUserPhotosResponse);
+}
+
+
+message User {
+  string id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string email = 4;
+  string counntry_code = 5;
+  string phone = 6;
+  bool is_verified = 7;
+  bool is_active = 8;
+  repeated common.Photo photos = 9;
+  string created_at = 10;
+  string updated_at = 11;
+}
+
+
+message CreateUserRequest {
+  string first_name = 1;
+  string last_name = 2;
+  string email = 3;
+  string country_code = 4;
+  string phone = 5;
+  string password = 6;
+  string confirm_password = 7;
+}
+
+message CreateUserResponse {
+  common.StandardResponse response = 1;
+  User user = 2;
+}
+
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message GetUserResponse {
+  common.StandardResponse response = 1;
+  User user = 2;
+}
+
+
+message UpdateUserRequest {
+  string id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string email = 4;
+  string country_code = 5;
+  string phone = 6;
+}
+
+message UpdateUserResponse {
+  common.StandardResponse response = 1;
+  User user = 2;
+}
+
+
+message DeleteUserRequest {
+  string id = 1;
+}
+
+message DeleteUserResponse {
+  common.StandardResponse response = 1;
+}
+
+
+message AuthenticateUserRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message AuthenticateUserResponse {
+  common.StandardResponse response = 1;
+  string access_token = 2;
+  string refresh_token = 3;
+  User user = 4;
+}
+
+
+message ValidateTokenRequest {
+  string token = 1;
+}
+
+message ValidateTokenResponse {
+  common.StandardResponse response = 1;
+  bool is_valid = 2;
+  User user = 3;
+}
+
+
+message RefreshTokenRequest {
+  string refresh_token = 1;
+}
+
+message RefreshTokenResponse {
+  common.StandardResponse response = 1;
+  string access_token = 2;
+  string refresh_token = 3;
+}
+
+
+message SendVerificationCodeRequest {
+  string user_id = 1;
+  string method = 2;
+}
+
+message SendVerificationCodeResponse {
+  common.StandardResponse response = 1;
+  string verification_id = 2;
+}
+
+message VerifyCodeRequest {
+  string verification_id = 1;
+  string code = 2;
+}
+
+message VerifyCodeResponse {
+  common.StandardResponse response = 1;
+  bool is_verified = 2;
+}
+
+
+message UploadPhotoRequest {
+  string user_id = 1;
+  common.PhotoType photo_type = 2;
+  bytes file_data = 3;
+  string filename = 4;
+  string mime_type = 5;
+}
+
+message UploadPhotoResponse {
+  common.StandardResponse response = 1;
+  common.Photo photo = 2;
+}
+
+
+message GetUserPhotosRequest {
+  string user_id = 1;
+  common.PhotoType photo_type = 2;
+}
+
+message GetUserPhotosResponse {
+  common.StandardResponse response = 1;
+  repeated common.Photo photos = 2;
+}

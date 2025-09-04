@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package common;
+
+option go_package = "stander-monolithic-go/proto";
+
+message StandardResponse {
+  bool success = 1;
+  string message = 2;
+  int32 status_code = 3;
+  string timestamp = 4;
+  string request_id = 5;
+  repeated string errors = 6;
+  map<string, string> metadata = 7;
+}
+message PaginationMeta {
+  int32 page = 1;
+  int32 limit = 2;
+  int32 total = 3;
+  int32 total_pages = 4;
+  bool has_next = 5;
+  bool has_prev = 6;
+}
+
+enum PhotoType {
+  USER_PHOTO = 0;
+  EMIRATES_PHOTO = 1;
+  PASSPORT_PHOTO = 2;
+}
+
+message Photo {
+  string id = 1;
+  PhotoType type = 2;
+  string url = 3;
+  string filename = 4;
+  int64 size = 5;
+  string mime_type = 6;
+  string uploaded_at = 7;
+}

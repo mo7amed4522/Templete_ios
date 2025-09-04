@@ -1,0 +1,654 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5488C7502E50808800B4D956 /* GRPCCodeGen in Frameworks */ = {isa = PBXBuildFile; productRef = 5488C74F2E50808800B4D956 /* GRPCCodeGen */; };
+		5488C7522E50808800B4D956 /* GRPCCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5488C7512E50808800B4D956 /* GRPCCore */; };
+		5488C7542E50808800B4D956 /* GRPCInProcessTransport in Frameworks */ = {isa = PBXBuildFile; productRef = 5488C7532E50808800B4D956 /* GRPCInProcessTransport */; };
+		5488C7572E50809900B4D956 /* SwiftProtobuf in Frameworks */ = {isa = PBXBuildFile; productRef = 5488C7562E50809900B4D956 /* SwiftProtobuf */; };
+		5488C7592E50809900B4D956 /* SwiftProtobufPluginLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 5488C7582E50809900B4D956 /* SwiftProtobufPluginLibrary */; };
+		5488C75B2E50809900B4D956 /* protoc-gen-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 5488C75A2E50809900B4D956 /* protoc-gen-swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5488C7322E50804C00B4D956 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5488C71C2E50804B00B4D956 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5488C7232E50804B00B4D956;
+			remoteInfo = "Luxor-App";
+		};
+		5488C73C2E50804C00B4D956 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5488C71C2E50804B00B4D956 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5488C7232E50804B00B4D956;
+			remoteInfo = "Luxor-App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5488C7242E50804B00B4D956 /* Luxor-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Luxor-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5488C7312E50804C00B4D956 /* Luxor-AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Luxor-AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5488C73B2E50804C00B4D956 /* Luxor-AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Luxor-AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		548321B12E69A3BC003CCA43 /* Exceptions for "Luxor-App" folder in "Luxor-App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Untitled.swift,
+			);
+			target = 5488C7232E50804B00B4D956 /* Luxor-App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5488C7262E50804B00B4D956 /* Luxor-App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				548321B12E69A3BC003CCA43 /* Exceptions for "Luxor-App" folder in "Luxor-App" target */,
+			);
+			path = "Luxor-App";
+			sourceTree = "<group>";
+		};
+		5488C7342E50804C00B4D956 /* Luxor-AppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Luxor-AppTests";
+			sourceTree = "<group>";
+		};
+		5488C73E2E50804C00B4D956 /* Luxor-AppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Luxor-AppUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5488C7212E50804B00B4D956 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5488C7502E50808800B4D956 /* GRPCCodeGen in Frameworks */,
+				5488C7522E50808800B4D956 /* GRPCCore in Frameworks */,
+				5488C75B2E50809900B4D956 /* protoc-gen-swift in Frameworks */,
+				5488C7592E50809900B4D956 /* SwiftProtobufPluginLibrary in Frameworks */,
+				5488C7542E50808800B4D956 /* GRPCInProcessTransport in Frameworks */,
+				5488C7572E50809900B4D956 /* SwiftProtobuf in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5488C72E2E50804C00B4D956 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5488C7382E50804C00B4D956 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5488C71B2E50804B00B4D956 = {
+			isa = PBXGroup;
+			children = (
+				5488C7262E50804B00B4D956 /* Luxor-App */,
+				5488C7342E50804C00B4D956 /* Luxor-AppTests */,
+				5488C73E2E50804C00B4D956 /* Luxor-AppUITests */,
+				5488C7252E50804B00B4D956 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5488C7252E50804B00B4D956 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5488C7242E50804B00B4D956 /* Luxor-App.app */,
+				5488C7312E50804C00B4D956 /* Luxor-AppTests.xctest */,
+				5488C73B2E50804C00B4D956 /* Luxor-AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5488C7232E50804B00B4D956 /* Luxor-App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5488C7452E50804C00B4D956 /* Build configuration list for PBXNativeTarget "Luxor-App" */;
+			buildPhases = (
+				5488C7202E50804B00B4D956 /* Sources */,
+				5488C7212E50804B00B4D956 /* Frameworks */,
+				5488C7222E50804B00B4D956 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5488C7262E50804B00B4D956 /* Luxor-App */,
+			);
+			name = "Luxor-App";
+			packageProductDependencies = (
+				5488C74F2E50808800B4D956 /* GRPCCodeGen */,
+				5488C7512E50808800B4D956 /* GRPCCore */,
+				5488C7532E50808800B4D956 /* GRPCInProcessTransport */,
+				5488C7562E50809900B4D956 /* SwiftProtobuf */,
+				5488C7582E50809900B4D956 /* SwiftProtobufPluginLibrary */,
+				5488C75A2E50809900B4D956 /* protoc-gen-swift */,
+			);
+			productName = "Luxor-App";
+			productReference = 5488C7242E50804B00B4D956 /* Luxor-App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5488C7302E50804C00B4D956 /* Luxor-AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5488C7482E50804C00B4D956 /* Build configuration list for PBXNativeTarget "Luxor-AppTests" */;
+			buildPhases = (
+				5488C72D2E50804C00B4D956 /* Sources */,
+				5488C72E2E50804C00B4D956 /* Frameworks */,
+				5488C72F2E50804C00B4D956 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5488C7332E50804C00B4D956 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5488C7342E50804C00B4D956 /* Luxor-AppTests */,
+			);
+			name = "Luxor-AppTests";
+			packageProductDependencies = (
+			);
+			productName = "Luxor-AppTests";
+			productReference = 5488C7312E50804C00B4D956 /* Luxor-AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5488C73A2E50804C00B4D956 /* Luxor-AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5488C74B2E50804C00B4D956 /* Build configuration list for PBXNativeTarget "Luxor-AppUITests" */;
+			buildPhases = (
+				5488C7372E50804C00B4D956 /* Sources */,
+				5488C7382E50804C00B4D956 /* Frameworks */,
+				5488C7392E50804C00B4D956 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5488C73D2E50804C00B4D956 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5488C73E2E50804C00B4D956 /* Luxor-AppUITests */,
+			);
+			name = "Luxor-AppUITests";
+			packageProductDependencies = (
+			);
+			productName = "Luxor-AppUITests";
+			productReference = 5488C73B2E50804C00B4D956 /* Luxor-AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5488C71C2E50804B00B4D956 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					5488C7232E50804B00B4D956 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					5488C7302E50804C00B4D956 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 5488C7232E50804B00B4D956;
+					};
+					5488C73A2E50804C00B4D956 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 5488C7232E50804B00B4D956;
+					};
+				};
+			};
+			buildConfigurationList = 5488C71F2E50804B00B4D956 /* Build configuration list for PBXProject "Luxor-App" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5488C71B2E50804B00B4D956;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5488C74E2E50808800B4D956 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+				5488C7552E50809900B4D956 /* XCRemoteSwiftPackageReference "swift-protobuf" */,
+				5488C75C2E5080A300B4D956 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5488C7252E50804B00B4D956 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5488C7232E50804B00B4D956 /* Luxor-App */,
+				5488C7302E50804C00B4D956 /* Luxor-AppTests */,
+				5488C73A2E50804C00B4D956 /* Luxor-AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5488C7222E50804B00B4D956 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5488C72F2E50804C00B4D956 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5488C7392E50804C00B4D956 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5488C7202E50804B00B4D956 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5488C72D2E50804C00B4D956 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5488C7372E50804C00B4D956 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5488C7332E50804C00B4D956 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5488C7232E50804B00B4D956 /* Luxor-App */;
+			targetProxy = 5488C7322E50804C00B4D956 /* PBXContainerItemProxy */;
+		};
+		5488C73D2E50804C00B4D956 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5488C7232E50804B00B4D956 /* Luxor-App */;
+			targetProxy = 5488C73C2E50804C00B4D956 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5488C7432E50804C00B4D956 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5488C7442E50804C00B4D956 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5488C7462E50804C00B4D956 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.eng.khaled.Luxor-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5488C7472E50804C00B4D956 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.eng.khaled.Luxor-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5488C7492E50804C00B4D956 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.eng.khaled.Luxor-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Luxor-App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Luxor-App";
+			};
+			name = Debug;
+		};
+		5488C74A2E50804C00B4D956 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.eng.khaled.Luxor-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Luxor-App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Luxor-App";
+			};
+			name = Release;
+		};
+		5488C74C2E50804C00B4D956 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.eng.khaled.Luxor-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Luxor-App";
+			};
+			name = Debug;
+		};
+		5488C74D2E50804C00B4D956 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.eng.khaled.Luxor-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Luxor-App";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5488C71F2E50804B00B4D956 /* Build configuration list for PBXProject "Luxor-App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5488C7432E50804C00B4D956 /* Debug */,
+				5488C7442E50804C00B4D956 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5488C7452E50804C00B4D956 /* Build configuration list for PBXNativeTarget "Luxor-App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5488C7462E50804C00B4D956 /* Debug */,
+				5488C7472E50804C00B4D956 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5488C7482E50804C00B4D956 /* Build configuration list for PBXNativeTarget "Luxor-AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5488C7492E50804C00B4D956 /* Debug */,
+				5488C74A2E50804C00B4D956 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5488C74B2E50804C00B4D956 /* Build configuration list for PBXNativeTarget "Luxor-AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5488C74C2E50804C00B4D956 /* Debug */,
+				5488C74D2E50804C00B4D956 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5488C74E2E50808800B4D956 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.3;
+			};
+		};
+		5488C7552E50809900B4D956 /* XCRemoteSwiftPackageReference "swift-protobuf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-protobuf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.30.0;
+			};
+		};
+		5488C75C2E5080A300B4D956 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5488C74F2E50808800B4D956 /* GRPCCodeGen */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5488C74E2E50808800B4D956 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPCCodeGen;
+		};
+		5488C7512E50808800B4D956 /* GRPCCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5488C74E2E50808800B4D956 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPCCore;
+		};
+		5488C7532E50808800B4D956 /* GRPCInProcessTransport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5488C74E2E50808800B4D956 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPCInProcessTransport;
+		};
+		5488C7562E50809900B4D956 /* SwiftProtobuf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5488C7552E50809900B4D956 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobuf;
+		};
+		5488C7582E50809900B4D956 /* SwiftProtobufPluginLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5488C7552E50809900B4D956 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = SwiftProtobufPluginLibrary;
+		};
+		5488C75A2E50809900B4D956 /* protoc-gen-swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5488C7552E50809900B4D956 /* XCRemoteSwiftPackageReference "swift-protobuf" */;
+			productName = "protoc-gen-swift";
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5488C71C2E50804B00B4D956 /* Project object */;
+}
