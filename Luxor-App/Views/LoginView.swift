@@ -1,10 +1,19 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var viewModel = LoginViewModel()
+    @StateObject private var viewModel: LoginViewModel
+    @EnvironmentObject var languageManager: LanguageManager
     @EnvironmentObject var themeManager: ThemeManager
+    @ObservedObject var authState: AuthState
+    @EnvironmentObject var diContainer: DIContainer
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.verticalSizeClass) var verticalSizeClass
+    
+    init() {
+        let container = DIContainer.shared
+        self._viewModel = StateObject(wrappedValue: container.makeLoginViewModel())
+        self.authState = container.authState
+    }
     
     private var isIPad: Bool {
         horizontalSizeClass == .regular && verticalSizeClass == .regular
@@ -17,11 +26,11 @@ struct LoginView: View {
                     LuxorLogoView(size: isIPad ? 140 : 100)
                     
                     VStack(spacing: 8) {
-                        Text("Welcome Back")
+                        Text(LocalizedStrings.welcomeBack(languageManager.currentLanguage))
                             .font(.system(size: isIPad ? 32 : 28, weight: .bold))
                             .foregroundColor(themeManager.isDarkMode ? LuxorColors.Dark.textPrimary : LuxorColors.Light.textPrimary)
                         
-                        Text("Sign in to your account")
+                        Text(LocalizedStrings.signIn(languageManager.currentLanguage))
                             .font(.system(size: isIPad ? 18 : 16, weight: .medium))
                             .foregroundColor(themeManager.isDarkMode ? LuxorColors.Dark.textSecondary : LuxorColors.Light.textSecondary)
                     }
@@ -46,6 +55,11 @@ struct LoginView: View {
         }
         .luxorThemedBackground(themeManager)
         .ignoresSafeArea(.all, edges: .bottom)
+        .toast(
+            isShowing: $authState.showToast,
+            message: authState.toastMessage,
+            type: authState.toastType
+        )
     }
     
     @ViewBuilder
@@ -60,7 +74,7 @@ struct LoginView: View {
                 Button(action: {
                     viewModel.forgotPassword()
                 }) {
-                    Text("Forgot Password?")
+                    Text(LocalizedStrings.forgotPassword(languageManager.currentLanguage))
                         .font(.system(size: 14, weight: .medium))
                         .foregroundColor(LuxorColors.luxorTeal)
                 }
@@ -75,7 +89,7 @@ struct LoginView: View {
                             .progressViewStyle(CircularProgressViewStyle(tint: .white))
                             .scaleEffect(0.8)
                     } else {
-                        Text("Sign In")
+                        Text(LocalizedStrings.signIn(languageManager.currentLanguage))
                             .font(.system(size: 18, weight: .semibold))
                     }
                 }
@@ -103,7 +117,7 @@ struct LoginView: View {
                     .fill(themeManager.isDarkMode ? LuxorColors.Dark.textSecondary.opacity(0.3) : LuxorColors.Light.textSecondary.opacity(0.3))
                     .frame(height: 1)
                 
-                Text("OR")
+                Text(LocalizedStrings.or(languageManager.currentLanguage))
                     .font(.system(size: 12, weight: .medium))
                     .foregroundColor(themeManager.isDarkMode ? LuxorColors.Dark.textSecondary : LuxorColors.Light.textSecondary)
                     .padding(.horizontal, 16)
@@ -127,7 +141,7 @@ struct LoginView: View {
                         Image(systemName: "person.badge.plus")
                             .font(.system(size: 16, weight: .medium))
                         
-                        Text("Create New Account")
+                        Text(LocalizedStrings.createNewAccount(languageManager.currentLanguage))
                             .font(.system(size: 16, weight: .semibold))
                     }
                     .foregroundColor(themeManager.isDarkMode ? LuxorColors.Dark.textPrimary : LuxorColors.Light.textPrimary)
@@ -154,7 +168,7 @@ struct LoginView: View {
                     )
                 }
                 VStack(spacing: 4) {
-                    Text("By creating an account, you agree to our")
+                    Text(LocalizedStrings.byCreatingAccountAgree(languageManager.currentLanguage))
                         .font(.system(size: 12, weight: .regular))
                         .foregroundColor(themeManager.isDarkMode ? LuxorColors.Dark.textSecondary : LuxorColors.Light.textSecondary)
                     
@@ -162,19 +176,19 @@ struct LoginView: View {
                         Button(action: {
                             viewModel.showTerms()
                         }) {
-                            Text("Terms of Service")
+                            Text(LocalizedStrings.termsOfService(languageManager.currentLanguage))
                                 .font(.system(size: 12, weight: .medium))
                                 .foregroundColor(LuxorColors.luxorTeal)
                                 .underline()
                         }
-                        Text("and")
+                        Text(LocalizedStrings.and(languageManager.currentLanguage))
                             .font(.system(size: 12, weight: .regular))
                             .foregroundColor(themeManager.isDarkMode ? LuxorColors.Dark.textSecondary : LuxorColors.Light.textSecondary)
                         
                         Button(action: {
                             viewModel.showPrivacyPolicy()
                         }) {
-                            Text("Privacy Policy")
+                            Text(LocalizedStrings.privacyPolicy(languageManager.currentLanguage))
                                 .font(.system(size: 12, weight: .medium))
                                 .foregroundColor(LuxorColors.luxorTeal)
                                 .underline()
@@ -192,4 +206,7 @@ struct LoginView: View {
 #Preview {
     LoginView()
         .environmentObject(ThemeManager())
+        .environmentObject(AuthState())
+        .environmentObject(DIContainer.shared)
+        .environmentObject(LanguageManager())
 }

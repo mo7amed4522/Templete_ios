@@ -19,5 +19,15 @@
     "[swift]": {
         "editor.defaultFormatter": "sweetpad.sweetpad",
         "editor.formatOnSave": true
-    }
+    },
+    "cSpell.words": [
+        "autocapitalization",
+        "autocorrection",
+        "checkmark",
+        "counntry",
+        "exclamationmark",
+        "GRPCNIO",
+        "servies",
+        "xmark"
+    ]
 }

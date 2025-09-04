@@ -18,45 +18,63 @@ class ThemeManager: ObservableObject {
 
 struct LuxorColors {
 
+    // Enhanced Gold Palette
     static let pureGold = Color(red: 1.0, green: 0.84, blue: 0.0)
     static let richGold = Color(red: 0.85, green: 0.65, blue: 0.13)
     static let deepGold = Color(red: 0.72, green: 0.53, blue: 0.04)
     static let bronzeGold = Color(red: 0.8, green: 0.5, blue: 0.2)
+    static let lightGold = Color(red: 1.0, green: 0.92, blue: 0.4)
+    static let darkGold = Color(red: 0.6, green: 0.4, blue: 0.0)
 
+    // Enhanced Blue Palette
     static let egyptianBlue = Color(red: 0.06, green: 0.32, blue: 0.73)
+    static let lightBlue = Color(red: 0.2, green: 0.5, blue: 0.9)
+    static let darkBlue = Color(red: 0.02, green: 0.15, blue: 0.4)
+    static let royalBlue = Color(red: 0.1, green: 0.4, blue: 0.8)
+    
+    // Enhanced Neutral Palette
     static let papyrusBeige = Color(red: 0.96, green: 0.87, blue: 0.70)
     static let sandstone = Color(red: 0.93, green: 0.84, blue: 0.68)
     static let hieroglyphBrown = Color(red: 0.4, green: 0.26, blue: 0.13)
+    static let warmWhite = Color(red: 0.98, green: 0.96, blue: 0.92)
+    static let deepBrown = Color(red: 0.2, green: 0.12, blue: 0.06)
 
     static let luxorTeal = egyptianBlue
     static let luxorGold = pureGold
-    static let luxorDarkTeal = Color(red: 0.04, green: 0.24, blue: 0.55)
+    static let luxorDarkTeal = darkBlue
 
     struct Light {
-        static let background = Color(red: 0.98, green: 0.95, blue: 0.88)
+        static let background = warmWhite
         static let secondaryBackground = papyrusBeige
-        static let textPrimary = hieroglyphBrown
-        static let textSecondary = Color(red: 0.5, green: 0.4, blue: 0.3)
-        static let cardBackground = Color(red: 0.99, green: 0.96, blue: 0.90)
-        static let shadow = hieroglyphBrown.opacity(0.15)
-        static let accent = pureGold
-        static let border = richGold.opacity(0.3)
+        static let textPrimary = deepBrown
+        static let textSecondary = hieroglyphBrown
+        static let cardBackground = Color.white
+        static let inputBackground = Color.white
+        static let shadow = hieroglyphBrown.opacity(0.12)
+        static let accent = richGold
+        static let accentSecondary = egyptianBlue
+        static let border = richGold.opacity(0.4)
+        static let borderSecondary = egyptianBlue.opacity(0.3)
+        static let success = Color.green
+        static let error = Color.red
+        static let warning = Color.orange
     }
 
     struct Dark {
-        static let background = Color(red: 0.08, green: 0.06, blue: 0.04)
-        static let secondaryBackground = Color(
-            red: 0.12,
-            green: 0.10,
-            blue: 0.08
-        )
-        static let textPrimary = pureGold
-        static let textSecondary = Color(red: 0.85, green: 0.75, blue: 0.55)
-        static let cardBackground = Color(red: 0.15, green: 0.12, blue: 0.08)
-        static let shadow = Color.black.opacity(0.6)
-        static let accent = richGold
-        static let border = deepGold.opacity(0.4)
-        static let inputBackground = Color(red: 0.18, green: 0.15, blue: 0.10)
+        static let background = Color(red: 0.05, green: 0.04, blue: 0.02)
+        static let secondaryBackground = Color(red: 0.1, green: 0.08, blue: 0.05)
+        static let textPrimary = lightGold
+        static let textSecondary = Color(red: 0.9, green: 0.8, blue: 0.6)
+        static let cardBackground = Color(red: 0.12, green: 0.1, blue: 0.07)
+        static let inputBackground = Color(red: 0.15, green: 0.12, blue: 0.08)
+        static let shadow = Color.black.opacity(0.8)
+        static let accent = pureGold
+        static let accentSecondary = lightBlue
+        static let border = pureGold.opacity(0.6)
+        static let borderSecondary = lightBlue.opacity(0.5)
+        static let success = Color.green.opacity(0.9)
+        static let error = Color.red.opacity(0.9)
+        static let warning = Color.orange.opacity(0.9)
     }
 }
 
