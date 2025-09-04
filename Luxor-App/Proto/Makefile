@@ -6,7 +6,7 @@ PROTO_DIR = .
 GENERATED_DIR = Generated
 
 # Proto files - Added upload.proto
-PROTO_FILES = user.proto
+PROTO_FILES = user.proto common.proto
 
 # Tools
 PROTOC = protoc

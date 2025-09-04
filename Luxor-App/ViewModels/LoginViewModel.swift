@@ -7,8 +7,16 @@ class LoginViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var showError = false
     @Published var errorMessage = ""
+    @EnvironmentObject var languageManager: LanguageManager
     
+    private let authUseCase: AuthUseCase
+    private let authState: AuthState
     private var cancellables = Set<AnyCancellable>()
+    
+    init(authUseCase: AuthUseCase, authState: AuthState) {
+        self.authUseCase = authUseCase
+        self.authState = authState
+    }
     
     var isFormValid: Bool {
         !email.isEmpty && !password.isEmpty && isValidEmail(email) && isValidPassword(password)
@@ -16,17 +24,30 @@ class LoginViewModel: ObservableObject {
     
     func login() {
         guard isFormValid else {
-            showError("Please fill in all fields correctly")
+            showError(LocalizedStrings.pleaseFillInAllFieldsCorrectly(languageManager.currentLanguage))
             return
         }
         
         isLoading = true
+        authState.setLoading(true)
         
-        // Simulate login API call
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.isLoading = false
-            // Handle login result
-        }
+        authUseCase.login(email: email, password: password)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] result in
+                self?.isLoading = false
+                self?.authState.setLoading(false)
+                
+                switch result {
+                case .success(let authResponse):
+                    self?.authState.login(user: authResponse.user, authResponse: authResponse)
+                    self?.authState.showSuccessToast("Login successful!")
+                case .failure(let error):
+                    let errorMessage = self?.getErrorMessage(from: error) ?? "Login failed"
+                    self?.showError(errorMessage)
+                    self?.authState.showErrorToast(errorMessage)
+                }
+            }
+            .store(in: &cancellables)
     }
     
     private func isValidEmail(_ email: String) -> Bool {
@@ -47,26 +68,38 @@ class LoginViewModel: ObservableObject {
         showError = true
     }
     
-    // ADD THESE NEW METHODS:
-    
+    private func getErrorMessage(from error: Error) -> String {
+        if let authError = error as? AuthError {
+            switch authError {
+            case .invalidCredentials:
+                return LocalizedStrings.invalidEmailOrPassword(languageManager.currentLanguage)
+            case .networkError:
+                return LocalizedStrings.networkConnectionError(languageManager.currentLanguage)
+            case .serverError(let message):
+                return message
+            case .decodingError:
+                return LocalizedStrings.dataProcessingError(languageManager.currentLanguage)
+            case .unknownError:
+                return LocalizedStrings.unknownErrorOccurred(languageManager.currentLanguage)
+            }
+        }
+        return error.localizedDescription
+    }
     func forgotPassword() {
         // Handle forgot password action
         print("Forgot password tapped for email: \(email)")
         // TODO: Navigate to forgot password screen or show alert
     }
-    
     func createAccount() {
         // Handle create account action
         print("Create account tapped")
         // TODO: Navigate to registration screen
     }
-    
     func showTerms() {
         // Handle terms of service action
         print("Terms of service tapped")
         // TODO: Show terms of service
     }
-    
     func showPrivacyPolicy() {
         // Handle privacy policy action
         print("Privacy policy tapped")

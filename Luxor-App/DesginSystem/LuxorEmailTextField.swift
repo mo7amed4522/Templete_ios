@@ -3,10 +3,11 @@ import SwiftUI
 struct LuxorEmailTextField: View {
     @Binding var email: String
     @EnvironmentObject var themeManager: ThemeManager
+    @EnvironmentObject var languageManager: LanguageManager
     @State private var isEditing = false
     @State private var isValid = true
     @State private var showValidation = false
-    
+
     private var backgroundGradient: LinearGradient {
         if themeManager.isDarkMode {
             return LinearGradient(
@@ -20,43 +21,43 @@ struct LuxorEmailTextField: View {
         } else {
             return LinearGradient(
                 colors: [
-                    Color.white,
-                    Color(UIColor.systemGray6)
+                    LuxorColors.Light.inputBackground,
+                    LuxorColors.Light.cardBackground
                 ],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
         }
     }
-    
+
     private var borderGradient: LinearGradient {
         if isEditing {
             return LinearGradient(
-                colors: [LuxorColors.luxorTeal, LuxorColors.luxorGold],
+                colors: themeManager.isDarkMode ?
+                    [LuxorColors.Dark.accent, LuxorColors.Dark.accentSecondary] :
+                    [LuxorColors.Light.accent, LuxorColors.Light.accentSecondary],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
         } else if !isValid {
             return LinearGradient(
-                colors: [Color.red.opacity(0.6), Color.red.opacity(0.3)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        } else if themeManager.isDarkMode {
-            return LinearGradient(
-                colors: [LuxorColors.Dark.border, LuxorColors.Dark.border.opacity(0.5)],
+                colors: themeManager.isDarkMode ?
+                    [LuxorColors.Dark.error, LuxorColors.Dark.error.opacity(0.6)] :
+                    [LuxorColors.Light.error, LuxorColors.Light.error.opacity(0.6)],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
         } else {
             return LinearGradient(
-                colors: [Color.gray.opacity(0.2), Color.gray.opacity(0.1)],
+                colors: themeManager.isDarkMode ?
+                    [LuxorColors.Dark.border, LuxorColors.Dark.border.opacity(0.5)] :
+                    [LuxorColors.Light.border, LuxorColors.Light.border.opacity(0.5)],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
         }
     }
-    
+
     private var iconBackgroundGradient: LinearGradient {
         if isEditing {
             return LinearGradient(
@@ -72,39 +73,35 @@ struct LuxorEmailTextField: View {
             )
         }
     }
-    
+
     private var iconColor: Color {
         if isEditing {
-            return LuxorColors.luxorTeal
+            return themeManager.isDarkMode ? LuxorColors.Dark.accent : LuxorColors.Light.accentSecondary
         } else if !isValid {
-            return Color.red
-        } else if themeManager.isDarkMode {
-            return LuxorColors.Dark.textSecondary
+            return themeManager.isDarkMode ? LuxorColors.Dark.error : LuxorColors.Light.error
         } else {
-            return Color.gray
+            return themeManager.isDarkMode ? LuxorColors.Dark.textSecondary : LuxorColors.Light.textSecondary
         }
     }
-    
+
     private var labelColor: Color {
         if isEditing {
-            return LuxorColors.luxorTeal
+            return themeManager.isDarkMode ? LuxorColors.Dark.accent : LuxorColors.Light.accentSecondary
         } else if !isValid {
-            return Color.red
-        } else if themeManager.isDarkMode {
-            return LuxorColors.Dark.textSecondary
+            return themeManager.isDarkMode ? LuxorColors.Dark.error : LuxorColors.Light.error
         } else {
-            return Color.gray
+            return themeManager.isDarkMode ? LuxorColors.Dark.textSecondary : LuxorColors.Light.textSecondary
         }
     }
-    
+
     private var textColor: Color {
         return themeManager.isDarkMode ? LuxorColors.Dark.textPrimary : LuxorColors.Light.textPrimary
     }
-    
+
     private var shadowColor: Color {
         return themeManager.isDarkMode ? LuxorColors.Dark.shadow : LuxorColors.Light.shadow
     }
-    
+
     private var validationIconGradient: LinearGradient {
         if email.isEmpty {
             return LinearGradient(colors: [Color.clear], startPoint: .top, endPoint: .bottom)
@@ -122,7 +119,7 @@ struct LuxorEmailTextField: View {
             )
         }
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             ZStack {
@@ -139,22 +136,24 @@ struct LuxorEmailTextField: View {
                         y: isEditing ? 6 : 3
                     )
                     .frame(height: 64)
-                
-                HStack(spacing: 16) {
-                    ZStack {
-                        Circle()
-                            .fill(iconBackgroundGradient)
-                            .frame(width: 36, height: 36)
-                        
-                        Image(systemName: isEditing ? "envelope.open.fill" : "envelope.fill")
-                            .foregroundColor(iconColor)
-                            .font(.system(size: 18, weight: .medium))
-                            .scaleEffect(isEditing ? 1.1 : 1.0)
+
+                HStack(spacing: languageManager.currentLanguage.isRTL ? 16 : 16) {
+                    if !languageManager.currentLanguage.isRTL {
+                        ZStack {
+                            Circle()
+                                .fill(iconBackgroundGradient)
+                                .frame(width: 36, height: 36)
+
+                            Image(systemName: isEditing ? "envelope.open.fill" : "envelope.fill")
+                                .foregroundColor(iconColor)
+                                .font(.system(size: 18, weight: .medium))
+                                .scaleEffect(isEditing ? 1.1 : 1.0)
+                        }
+                        .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isEditing)
                     }
-                    .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isEditing)
                     VStack(alignment: .leading, spacing: 4) {
                         HStack {
-                            Text("Email Address")
+                            Text(LocalizedStrings.emailAddress(languageManager.currentLanguage))
                                 .font(.system(
                                     size: (isEditing || !email.isEmpty) ? 11 : 16,
                                     weight: .medium
@@ -186,36 +185,57 @@ struct LuxorEmailTextField: View {
                                 }
                         }
                     }
-                    
-                    // Validation Status Icon
                     ZStack {
                         Circle()
                             .fill(validationIconGradient)
                             .frame(width: 32, height: 32)
-                        
+
                         if !email.isEmpty {
                             Image(systemName: isValid ? "checkmark.circle.fill" : "xmark.circle.fill")
-                                .foregroundColor(isValid ? .green : .red)
+                                .foregroundColor(isValid ?
+                                    (themeManager.isDarkMode ? LuxorColors.Dark.success : LuxorColors.Light.success) :
+                                    (themeManager.isDarkMode ? LuxorColors.Dark.error : LuxorColors.Light.error)
+                                )
                                 .font(.system(size: 16, weight: .medium))
                                 .scaleEffect(isValid ? 1.1 : 1.0)
                         }
                     }
                     .animation(.spring(response: 0.4, dampingFraction: 0.7), value: isValid)
                     .animation(.spring(response: 0.4, dampingFraction: 0.7), value: email.isEmpty)
+
+                    if languageManager.currentLanguage.isRTL {
+                        ZStack {
+                            Circle()
+                                .fill(iconBackgroundGradient)
+                                .frame(width: 36, height: 36)
+
+                            Image(systemName: isEditing ? "envelope.open.fill" : "envelope.fill")
+                                .foregroundColor(iconColor)
+                                .font(.system(size: 18, weight: .medium))
+                                .scaleEffect(isEditing ? 1.1 : 1.0)
+                        }
+                        .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isEditing)
+                    }
                 }
                 .padding(.horizontal, 20)
             }
-            
-            // Enhanced Validation Message
             if !isValid && !email.isEmpty {
                 HStack(spacing: 8) {
-                    Image(systemName: "exclamationmark.triangle.fill")
-                        .foregroundColor(.red)
-                        .font(.system(size: 12))
-                    
-                    Text("Please enter a valid email address")
+                    if !languageManager.currentLanguage.isRTL {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .foregroundColor(themeManager.isDarkMode ? LuxorColors.Dark.error : LuxorColors.Light.error)
+                            .font(.system(size: 12))
+                    }
+
+                    Text(LocalizedStrings.pleaseEnterValidEmail(languageManager.currentLanguage))
                         .font(.system(size: 12, weight: .medium))
-                        .foregroundColor(.red)
+                        .foregroundColor(themeManager.isDarkMode ? LuxorColors.Dark.error : LuxorColors.Light.error)
+
+                    if languageManager.currentLanguage.isRTL {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .foregroundColor(themeManager.isDarkMode ? LuxorColors.Dark.error : LuxorColors.Light.error)
+                            .font(.system(size: 12))
+                    }
                 }
                 .padding(.horizontal, 4)
                 .transition(.asymmetric(
@@ -232,7 +252,7 @@ struct LuxorEmailTextField: View {
             }
         }
     }
-    
+
     private func validateEmail(_ email: String) {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
@@ -244,12 +264,12 @@ struct LuxorEmailTextField: View {
 
 #Preview {
     VStack(spacing: 40) {
-        // Light mode
         LuxorEmailTextField(email: .constant("user@example.com"))
             .environmentObject(ThemeManager())
-        
-        // Dark mode
-        LuxorEmailTextField(email: .constant("invalid-email"))
+            .environmentObject(LanguageManager())
+            .background(Color.white)
+        LuxorEmailTextField(email: .constant("user@example.com"))
+            .environmentObject(LanguageManager())
             .environmentObject({
                 let theme = ThemeManager()
                 theme.isDarkMode = true
